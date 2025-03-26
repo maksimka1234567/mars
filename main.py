@@ -211,5 +211,29 @@ def promotion_image():
                     </html>"""
 
 
+@app.route('/choice/<planet_name>')
+def planet_name(planet_name):
+    return f"""<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                            <link rel="stylesheet" 
+                            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+                            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+                            crossorigin="anonymous">
+                            <title>Варианты выбора</title>
+                          </head>
+                          <body>
+                            <h1>Моё предложение: {planet_name}</h1>
+                            <h2>Эта планета близка к Земле;</h2>
+                            <h2 class="alert alert-success" id="123">На ней много необходимых ресурсов;</div>
+                            <h2 class="alert alert-dark">На ней есть вода и атмосфера;</div>
+                            <h2 class="alert alert-warning">На ней есть небольшое магнитное поле;</div>
+                            <h2 class="alert alert-danger">Наконец, она просто красива!</div>
+                          </body>
+                        </html>"""
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
