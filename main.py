@@ -258,5 +258,84 @@ def results(nickname, level, rating):
                             </html>"""
 
 
+@app.route('/load_photo', methods=['POST', 'GET'])
+def load_photo():
+    if request.method == 'POST':
+        f = request.files['file']
+        f.save('static/img/download.png')
+    return f"""<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet" 
+                    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+                    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+                    crossorigin="anonymous">
+                    <link rel="stylesheet" 
+                        href={url_for('static', filename='css/astro.css')}>
+                    <title>Отбор астронавтов</title>
+                  </head>
+                  <body>
+                        <h1 align="center">Загрузка фотографии</h1>
+                        <h2 align="center">для участия в миссии</h2>
+                            <div>
+                                <form class="login_form" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="photo">Приложите фотографию</label>
+                                        <input type="file" class="form-control-file" id="photo" name="file">
+                                    </div>
+                                    <img src={url_for('static', filename='img/download.png')} width=400>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                </form>
+                            </div>
+                  </body>
+                </html>"""
+
+
+@app.route('/carousel')
+def carousel():
+    return f"""<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+                    <title>Пейзажи Марса</title>
+                  </head>
+                  <body>
+                        <h1 align="center">Пейзажи Марса</h1>
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img src="static/landscapes/landscape1.png" class="d-block w-100" alt="Пейзаж 1">
+                                </div>
+                                <div class="carousel-item">
+                                  <img src="static/landscapes/landscape2.png" class="d-block w-100" alt="Пейзаж 2">
+                                </div>
+                                <div class="carousel-item">
+                                  <img src="static/landscapes/landscape3.png" class="d-block w-100" alt="Пейзаж 3">
+                                </div>
+                                <div class="carousel-item">
+                                  <img src="static/landscapes/landscape4.png" class="d-block w-100" alt="Пейзаж 4">
+                                </div>
+                                <div class="carousel-item">
+                                  <img src="static/landscapes/landscape5.png" class="d-block w-100" alt="Пейзаж 5">
+                                </div>
+                              </div>
+                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Предыдущий</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Следующий</span>
+                              </button>
+                            </div>
+                  </body>
+                </html>"""
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
