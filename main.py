@@ -49,9 +49,10 @@ def astr_sel():
                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
                             crossorigin="anonymous">
-                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}?v=1" />
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/astro.css')}">
                             <h1 align="center">Анкета претендента</h1>
                             <h2 align="center">на участие в миссии</h2>
+                            <title>Отбор астронавтов</title>
                           </head>
                           <body>
                             <div>
@@ -180,6 +181,34 @@ def astr_sel():
         print(request.form['about'])
         print(request.form['accept'])
         return "Форма отправлена"
+
+
+@app.route('/promotion_image')
+def promotion_image():
+    return f"""<!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        <link rel="stylesheet" 
+                        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+                        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+                        crossorigin="anonymous">
+                        <link rel="stylesheet"
+                        href={url_for('static', filename='css/style.css')}>
+                        <title>Колонизация</title>
+                      </head>
+                      <body>
+                        <h1>Жди нас, Марс!</h1>
+                        <img src="{url_for('static', filename='img/mars.png')}" 
+               alt="здесь должна была быть картинка, но не нашлась">
+                        <h2 class="alert alert-dark" id="123">Человечество вырастает из детства.</div>
+                        <h2 class="alert alert-success">Человечеству мала одна планета.</div>
+                        <h2 class="alert alert-secondary">Мы сделаем обитаемыми безжизненные пока планеты.</div>
+                        <h2 class="alert alert-warning">И начнем с Марса!</div>
+                        <h2 class="alert alert-danger">Присоединяйся!</div>
+                      </body>
+                    </html>"""
 
 
 if __name__ == '__main__':
