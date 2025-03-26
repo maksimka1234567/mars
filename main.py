@@ -235,5 +235,28 @@ def planet_name(planet_name):
                         </html>"""
 
 
+@app.route('/results/<nickname>/<int:level>/<float:rating>')
+def results(nickname, level, rating):
+    return f"""<!doctype html>
+                            <html lang="en">
+                              <head>
+                                <meta charset="utf-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                <link rel="stylesheet" 
+                                href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+                                integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+                                crossorigin="anonymous">
+                                <title>Результаты</title>
+                              </head>
+                              <body>
+                                <h1>Результаты отбора</h1>
+                                <h2>Претендента на участие в миссии {nickname}:</h2>
+                                <h3 class="alert alert-success" id="123">Поздравляем! Ваш рейтинг после {level} этапа отбора</div>
+                                <h3>составляет {rating}!</h3>
+                                <h3 class="alert alert-warning">Желаем удачи!</div>
+                              </body>
+                            </html>"""
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
